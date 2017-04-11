@@ -1,0 +1,31 @@
+{
+  "name": "webdriver-functional-tests",
+  "version": "0.0.1",
+  "description": "Functional tests written in cucumber for the w3c webdriver client",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/.bin/cucumber.js.cmd --compiler js:babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaborSzalay/webdriver-functional-tests.git"
+  },
+  "keywords": [
+    "webdriver",
+    "cucumber"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GaborSzalay/webdriver-functional-tests/issues"
+  },
+  "homepage": "https://github.com/GaborSzalay/webdriver-functional-tests#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "chai": "^3.5.0",
+    "chromedriver": "^2.29.0",
+    "cucumber": "^2.0.0-rc.9",
+    "w3c-webdriver": "0.0.3"
+  }
+}
