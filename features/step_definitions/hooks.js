@@ -2,19 +2,21 @@ const {newSession} = require('w3c-webdriver');
 const {defineSupportCode} = require('cucumber');
 const chromedriver = require('chromedriver');
 const testApp = require('../../test-app');
+const sessionStorage = require('./session-storage');
 
-defineSupportCode(async function ({After, Before}) {
-    Before(async function () {
-        chromedriver.start();
+defineSupportCode(({registerHandler}) => {
+    registerHandler('BeforeFeatures', async () => {
+        await chromedriver.start();
         await testApp.start();
-        this.session = await newSession('http://localhost:9515', {
+        await sessionStorage.create(newSession('http://localhost:9515', {
             browserName: 'Chrome'
-        });
+        }));
     });
 
-    After(async function () {
-        await this.session.delete();
-        chromedriver.stop();
+    registerHandler('AfterFeatures', async () => {
+        const session = await sessionStorage.get();
+        await session.delete();
+        await chromedriver.stop();
         await testApp.stop();
-    });
+    })
 });
