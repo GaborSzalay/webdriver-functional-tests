@@ -6,9 +6,9 @@ const sessionStorage = require('./session-storage');
 
 defineSupportCode(({registerHandler}) => {
     registerHandler('BeforeFeatures', async () => {
-        await chromedriver.start();
+        chromedriver.start();
         await testApp.start();
-        await sessionStorage.create(newSession('http://localhost:9515', {
+        sessionStorage.create(await newSession('http://localhost:9515', {
             browserName: 'Chrome'
         }));
     });
@@ -16,7 +16,7 @@ defineSupportCode(({registerHandler}) => {
     registerHandler('AfterFeatures', async () => {
         const session = await sessionStorage.get();
         await session.delete();
-        await chromedriver.stop();
+        chromedriver.stop();
         await testApp.stop();
     })
 });

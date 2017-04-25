@@ -1,16 +1,14 @@
-module.exports = (() => {
-    let session = false;
+let session;
 
-    const create = (_session) => {
-        session = _session;
-    };
+function create(_session) {
+    session = _session;
+};
 
-    const get = () => {
-        return session;
-    };
+function get () {
+    return session;
+};
 
-    return {
-        create: create,
-        get: get
-    }
-})();
+module.exports = {
+    create,
+    get
+};
