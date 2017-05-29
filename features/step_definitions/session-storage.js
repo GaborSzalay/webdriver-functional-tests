@@ -1,14 +1,23 @@
+const {newSession} = require('w3c-webdriver');
+
 let session;
 
-function store(_session) {
-    session = _session;
-};
+async function start() {
+    session = await newSession('http://localhost:9515', {
+        browserName: 'Chrome'
+    })
+}
+
+async function stop() {
+    await session.delete();
+}
 
 function get () {
     return session;
 };
 
 module.exports = {
-    store,
+    start,
+    stop,
     get
 };

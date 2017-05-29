@@ -1,4 +1,3 @@
-const {newSession} = require('w3c-webdriver');
 const {defineSupportCode} = require('cucumber');
 const chromedriver = require('chromedriver');
 const testApp = require('../../test-app');
@@ -8,15 +7,12 @@ defineSupportCode(({registerHandler}) => {
     registerHandler('BeforeFeatures', async () => {
         chromedriver.start();
         await testApp.start();
-        sessionStorage.store(await newSession('http://localhost:9515', {
-            browserName: 'Chrome'
-        }));
+        await sessionStorage.start();
     });
 
     registerHandler('AfterFeatures', async () => {
-        const session = await sessionStorage.get();
-        await session.delete();
-        chromedriver.stop();
+        await sessionStorage.stop();
         await testApp.stop();
+        chromedriver.stop();
     })
 });
