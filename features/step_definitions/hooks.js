@@ -8,7 +8,7 @@ defineSupportCode(({registerHandler}) => {
     registerHandler('BeforeFeatures', async () => {
         chromedriver.start();
         await testApp.start();
-        sessionStorage.create(await newSession('http://localhost:9515', {
+        sessionStorage.store(await newSession('http://localhost:9515', {
             browserName: 'Chrome'
         }));
     });

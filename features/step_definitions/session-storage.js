@@ -1,6 +1,6 @@
 let session;
 
-function create(_session) {
+function store(_session) {
     session = _session;
 };
 
@@ -9,6 +9,6 @@ function get () {
 };
 
 module.exports = {
-    create,
+    store,
     get
 };
