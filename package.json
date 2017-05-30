@@ -26,6 +26,6 @@
     "chai": "^3.5.0",
     "chromedriver": "^2.29.0",
     "cucumber": "^2.0.0-rc.9",
-    "w3c-webdriver": "0.0.3"
+    "w3c-webdriver": "0.0.4"
   }
 }
